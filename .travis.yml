@@ -1,4 +1,23 @@
 language: r
+
+r_packages:
+  - microbenchmark
+  - roxygen2
+  - rmarkdown
+
+r_github_packages:
+  - analyticalmonk/Rperform
+
 sudo: false
 cache: packages
 warnings_are_errors: false
+
+env:
+  global:
+  - secure: "mfoT1O1fBaWOyiOqtHjgo4eGa9CiM92aRkMKCaz/IRSup7SKH6aOd+JZxOy5t4S2OaPB9VbGtXXLW1Fu/VEB+t9gYT0UNj79vjYKoO+l4u3zEEFzaeeYTWeGbVV3uc/NyhbGLYQy/v4YfafOfDGJaHjsT3QzQo/f5yt4bc4beu8h88hD19hPBIWc9LUVzc6UaF4kUzgqNsV4iL/oU7dn8JHsuZIrx729hj/+3WF0DKmEUB46cslxonZ2oTjVgA7GhO+PAdzV71q/cGUExeSS+aB6seOna6Cj+hCrVFZmMWTP+hfjCUL+BosOnt4kKvJxnWMQ4tZaLlkqQm4QdrOY5XpODnvpEAktgg36BkREEepiAN8X00mAnxMJZ0amO6Evmt91hqarDORJ2A7pVvOo8ONbtte4EqG8/spFGExTs28UBL3f5p7qyW9Yn9HxEUcwjItC08ohzyeN5nq6hNxMoIq9oeO4nlADMJYkxe3L9h/jdOcIFspPtonPb1MSwrHxqFeemmANksO/OSmiC6zDlJPVVKRwqICjqAWMiMJCImjs4I+UYNYQLeaTifAe+W6Yc3Gd4dCUI+9N/fXhZOQt9RuwA92nZgjua1s2cBSyKe3ss8M5ut2zKHqhK2J9smOAdqsTuOVHy9xAPq1ncaI1awn1Xu8xjJEe0ATYDmTPOoQ="
+  - USER_EMAIL="shadowaccount@github.com""
+  - USER_NAME="ShadowAccount"
+  - RPERFORM_COMMAND="Rperform::plot_webpage(test_directory = './tests/testthat', metric = 'time')"
+
+before_script:
+  - travis_wait 30 source `Rscript -e "cat(find.package(\"Rperform\"))"`/push_gh_pages.sh

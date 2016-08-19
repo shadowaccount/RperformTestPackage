@@ -7,7 +7,7 @@ justTimeIt <- function() {
 
 justTimeIt2 <- function() {
   a <- 2 + 2
-  Sys.sleep(time = 0.3)
+  Sys.sleep(time = 0.4)
   b <- a + a
   b
 }
